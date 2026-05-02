@@ -1,10 +1,13 @@
 import type { Metadata } from 'next'
-import { Inter, Geist_Mono } from 'next/font/google'
+import { Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
-const _inter = Inter({ subsets: ["latin"] });
-const _geistMono = Geist_Mono({ subsets: ["latin"] });
+// Configuriamo Inter come font principale
+const inter = Inter({ 
+  subsets: ["latin"],
+  variable: '--font-inter',
+});
 
 export const metadata: Metadata = {
   title: 'Simulatore Scelte di Vita',
@@ -36,7 +39,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="it" className="dark bg-background">
-      <body className={`${_inter.className} font-sans antialiased`}>
+      <body className={`${inter.className} font-sans antialiased`}>
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
